@@ -8,6 +8,12 @@ Audo's MCP server is hosted: there is nothing to install or build.
    { "mcpServers": { "audo": { "url": "https://audo.ai/mcp" } } }
    ```
 
+   In Cline (`cline_mcp_settings.json`), also set the transport:
+
+   ```json
+   { "mcpServers": { "audo": { "type": "streamableHttp", "url": "https://audo.ai/mcp" } } }
+   ```
+
 2. The first time a tool runs, sign in at audo.ai when asked (OAuth). No API key is needed.
 3. Check it works: ask "Use Audo to show my account" (`get_account`).
 
