@@ -3,12 +3,12 @@
   "name": "ai.audo/audo",
   "title": "Audo",
   "description": "Audio and video tools for your AI assistant: remove noise, enhance voices, transcribe, and more.",
-  "websiteUrl": "https://audo.ai",
+  "websiteUrl": "https://audo.ai/?utm_source=mcp_registry&utm_medium=directory",
   "repository": {
     "url": "https://github.com/audo-ai/audo-mcp",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "remotes": [
     {
       "type": "streamable-http",

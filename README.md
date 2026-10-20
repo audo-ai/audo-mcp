@@ -24,7 +24,7 @@ claude mcp add --transport http --scope user audo https://audo.ai/mcp
 }
 ```
 
-Setup guides for ChatGPT, Claude, and other assistants: https://audo.ai/setup
+Setup guides for ChatGPT, Claude, and other assistants: https://audo.ai/setup?utm_source=github&utm_medium=directory
 
 ## Tools
 
@@ -49,7 +49,7 @@ Files and jobs: `create_upload`, `import_file` (fetches a direct file URL), `lis
 
 ## Free use and pricing
 
-Every tool has a free part each day, with no payment. Beyond it, you pay per minute of audio, and only for jobs that succeed. Prices: https://audo.ai/pricing
+Every tool has a free part each day, with no payment. Beyond it, you pay per minute of audio, and only for jobs that succeed. Prices: https://audo.ai/pricing?utm_source=github&utm_medium=directory
 
 ## Example prompts
 
@@ -60,10 +60,10 @@ Every tool has a free part each day, with no payment. Beyond it, you pay per min
 
 ## Links
 
-- MCP docs: https://audo.ai/docs/mcp
-- API docs: https://audo.ai/docs/api
+- MCP docs: https://audo.ai/docs/mcp?utm_source=github&utm_medium=directory
+- API docs: https://audo.ai/docs/api?utm_source=github&utm_medium=directory
 - Every tool, for agents: https://audo.ai/llms.txt
-- Setup guides: https://audo.ai/setup
+- Setup guides: https://audo.ai/setup?utm_source=github&utm_medium=directory
 
 ## Support
 

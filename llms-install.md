@@ -17,4 +17,4 @@ Audo's MCP server is hosted: there is nothing to install or build.
 2. The first time a tool runs, sign in at audo.ai when asked (OAuth). No API key is needed.
 3. Check it works: ask "Use Audo to show my account" (`get_account`).
 
-Every tool has a free part each day. Docs: https://audo.ai/docs/mcp
+Every tool has a free part each day. Docs: https://audo.ai/docs/mcp?utm_source=github&utm_medium=directory
