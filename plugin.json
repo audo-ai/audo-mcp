@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "audo",
-  "version": "1.0.0",
-  "description": "Audio and video tools for your AI assistant: remove noise, enhance recorded speech, transcribe, edit, separate stems, and convert files.",
+  "version": "1.1.0",
+  "description": "Audio and video tools for your AI assistant: remove noise, enhance recorded speech, transcribe, translate, caption, reframe, edit, separate stems, and convert files.",
   "author": {
     "name": "Audo AI LLC",
     "email": "support@audo.ai",
@@ -10,5 +10,5 @@
   },
   "homepage": "https://audo.ai",
   "repository": "https://github.com/audo-ai/audo-mcp",
-  "keywords": ["audio", "video", "transcription", "noise-removal", "podcast", "captions", "mcp"]
+  "keywords": ["audio", "video", "transcription", "noise-removal", "podcast", "captions", "subtitles", "reframe", "audiogram", "mcp"]
 }

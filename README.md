@@ -2,13 +2,13 @@
 
 Audo: pro sound without the studio. Audio and video tools for you and your AI assistant: remove noise, enhance voices, transcribe, cut, and more.
 
-This repository packages Audo's hosted MCP server at **https://audo.ai/mcp**. It uses Streamable HTTP and OAuth. The first time you connect, your assistant asks you to sign in to your Audo account. No API key is required for the OAuth connection.
+This repository packages Audo's hosted MCP server at **https://audo.ai/mcp**. It uses Streamable HTTP and OAuth. The first time you connect, your assistant asks you to sign in to your Audo account. No API key is required for the OAuth connection (clients that cannot open a browser can send an API key from [audo.ai/keys](https://audo.ai/keys?utm_source=github&utm_medium=directory) as a Bearer token).
 
 ## Install
 
-### Agent Plugin clients
+### Agent Plugin and Gemini CLI extension clients
 
-This repository contains a portable Agent Plugins manifest, `plugin.json`, and a root `mcp.json` pointing to the hosted server. Install the repository using your client's plugin installation workflow. Official marketplace listings are pending; this repository does not imply approval by a marketplace.
+This repository contains a portable Agent Plugins manifest (`plugin.json`), a Gemini CLI extension manifest (`gemini-extension.json`), and a root `mcp.json` pointing to the hosted server. Install the repository using your client's plugin or extension workflow. Official marketplace listings are pending; this repository does not imply approval by a marketplace.
 
 ### Claude Code
 
@@ -21,6 +21,18 @@ claude mcp add --transport http --scope user audo https://audo.ai/mcp
 ```sh
 codex mcp add audo --url https://audo.ai/mcp
 codex mcp login audo
+```
+
+### Gemini CLI
+
+```sh
+gemini mcp add --transport http --scope user audo https://audo.ai/mcp
+```
+
+### GitHub Copilot CLI
+
+```sh
+copilot mcp add --transport http audo https://audo.ai/mcp
 ```
 
 ### Cursor and other MCP clients
@@ -42,13 +54,16 @@ Connect through OAuth when the client prompts. See [setup guides](https://audo.a
 ## What it does
 
 - **Speech cleanup:** `remove_noise` reduces background noise while preserving the recorded voice. `enhance_voice` regenerates supplied speech to restore echo, distortion, muffled recordings, and poor microphones. Both are designed for speech and can remove music or other sounds.
-- **Text and captions:** `transcribe_audio` produces text, word timestamps, speaker labels, and TXT/SRT/VTT/JSON outputs. `align_script` aligns an existing script to a recording.
+- **Transcription, translation, and shortening:** `transcribe_audio` produces text, word timestamps, speaker labels, and TXT/SRT/VTT/JSON outputs. `align_script` aligns an existing script to a recording. `translate_transcript` translates speech transcripts while keeping segment times and speakers, and `translate_subtitles` translates SRT/VTT files into up to 5 languages. `find_highlights` ranks moments for short clips, and `shorten_transcript` condenses speech in source order with waveform-safe cut ranges and retimed captions.
+- **Captions, audiograms, and overlays:** `add_captions` burns styled captions into video (with presets from `list_caption_presets`, saved styles via `save_caption_style`, keyword highlighting, auto-emoji, translation, and bilingual options). `audio_to_video` turns audio into an MP4 audiogram with reactive waveforms (with presets from `list_audiogram_presets`). `add_overlay` adds timed text and logo overlays with animations.
 - **Editing:** `cut_audio`, `remove_fillers`, `remove_silence`, and `join_audio` trim recordings, remove filler words or long pauses, and combine files.
-- **Finishing:** `level_speakers` balances loud and quiet voices; `mix_tracks` layers and ducks tracks; `adjust_loudness` sets a target loudness; `convert_audio` changes formats; `replace_audio` swaps a video's soundtrack.
-- **Music and video:** `split_audio` separates stems; `change_speed_pitch` changes tempo and pitch; `find_key_bpm` measures key and tempo; `reverse_audio` reverses sound; `mute_video` removes a video's audio.
-- **Analysis:** `analyze_audio` reports media information, loudness, peaks, clipping, and silence.
+- **Finishing:** `level_speakers` balances loud and quiet voices; `mix_tracks` layers and ducks tracks; `adjust_loudness` sets a target loudness; `convert_audio` changes audio formats; `replace_audio` swaps a video's soundtrack.
+- **Video and reframing:** `reframe_plan` and `reframe_video` track faces across scenes to reframe video into 9:16, 1:1, 4:5, or 16:9 with editable keyframe plans. `convert_video`, `compress_video`, `crop_video`, `resize_video`, `reverse_video`, `loop_video`, `mute_video`, `get_frame`, and `video_to_gif` convert, compress, crop, resize, reverse, loop, mute, extract still frames, and turn clips into animated GIF or WebP files.
+- **Music and stems:** `split_audio` separates vocals, instrumental, 4-stem, or dialogue/music/effects stems; `change_speed_pitch` changes tempo and pitch; `find_key_bpm` measures musical key and BPM; `reverse_audio` reverses sound.
+- **Compound workflows:** `list_workflows`, `run_workflow`, `get_workflow_run`, and `save_workflow` run and save multi-step recipes such as *Meeting shortener*, *Clips*, *Podcast-ready episode*, and *Fix a video's sound*.
+- **Analysis:** `analyze_audio` reports media information, integrated LUFS loudness, true peak, noise floor, clipping, and silence.
 
-Use `add_file` for a direct HTTPS file URL or to start an upload. Supported chat clients also expose Audo's in-chat upload box. Local coding agents can use the returned upload command. Do not pass a local filesystem path as a public URL.
+Use `add_file` for a direct HTTPS file URL, a chat attachment, or to start an upload. Supported chat clients also expose Audo's in-chat upload box. Local coding agents can use the returned upload command. Do not pass a local filesystem path as a public URL.
 
 `list_files`, `get_file`, `get_job`, `get_transcript`, `cancel_job`, and `get_account` manage files, status, transcript reading, cancellation, and account information. Processing tools return either finished output or a job to check with `get_job`.
 
@@ -56,7 +71,9 @@ Use `add_file` for a direct HTTPS file URL or to start an upload. Supported chat
 
 - Remove background noise from an interview and return the cleaned recording.
 - Balance a quiet guest and loud host, then normalize the result for a podcast.
-- Transcribe a recording with speaker labels and return the transcript and SRT captions.
+- Transcribe a recording with speaker labels, translate subtitles, or burn styled captions into a video.
+- Reframe a horizontal talk into a 9:16 vertical clip following the speaker's face, or turn an audio clip into a waveform audiogram.
+- Shorten a meeting recording or extract ranked highlight clips.
 - Split vocals and instrumental audio, then change the instrumental's speed or pitch.
 
 ## Free use, limits, and privacy
