@@ -1,7 +1,7 @@
 {
   "name": "audo",
-  "version": "1.0.0",
-  "description": "Audo: pro sound without the studio. Audio and video tools for you and your AI assistant: remove noise, enhance voices, transcribe, cut, and more.",
+  "version": "1.2.0",
+  "description": "Audo: pro sound without the studio. Audio and video tools, workflows, and a browser editor for you and your AI assistant: clean up, transcribe, cut, and more.",
   "mcpServers": {
     "audo": {
       "httpUrl": "https://audo.ai/mcp"

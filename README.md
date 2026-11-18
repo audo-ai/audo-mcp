@@ -51,6 +51,16 @@ For a client's custom MCP configuration, use:
 
 Connect through OAuth when the client prompts. See [setup guides](https://audo.ai/setup?utm_source=github&utm_medium=directory) for client-specific instructions.
 
+## Try a recording through the free API
+
+Send a short clip without an API key. The headers identify the response type. Keep the response body for the output or job details.
+
+```sh
+curl --fail-with-body -F file=@clip.mp3 https://audo.ai/api/try/remove-noise -D response.headers -o response.body
+```
+
+The [audio cleanup skill](skills/audo-audio-cleanup/SKILL.md) maps editing tasks to MCP tools and free API endpoints. Use `find_tools` for live discovery. The hosted service also supports sound isolation by description, speaker dubbing and chapter generation.
+
 ## What it does
 
 - **Speech cleanup:** `remove_noise` reduces background noise while preserving the recorded voice. `enhance_voice` regenerates supplied speech to restore echo, distortion, muffled recordings, and poor microphones. Both are designed for speech and can remove music or other sounds.
